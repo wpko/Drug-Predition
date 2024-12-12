@@ -5,7 +5,6 @@ import uvicorn
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import fastapi.middleware.cors import CORSMiddleware
 
 df = pd.read_csv('drug.csv')
 df.head()
