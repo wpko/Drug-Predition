@@ -5,7 +5,7 @@ import uvicorn
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import joblib
+import fastapi.middleware.cors import CORSMiddleware
 
 df = pd.read_csv('drug.csv')
 df.head()
@@ -53,6 +53,14 @@ class PredictionInput(BaseModel):
 le_sex.fit(['F', 'M'])
 le_BP.fit(['HIGH', 'LOW', 'NORMAL'])
 le_chol.fit(['HIGH', 'NORMAL'])
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://wpko.github.io"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
     
 @app.post("/predict")
 def predict(input_data: PredictionInput):
