@@ -52,7 +52,15 @@ class PredictionInput(BaseModel):
 le_sex.fit(['F', 'M'])
 le_BP.fit(['HIGH', 'LOW', 'NORMAL'])
 le_chol.fit(['HIGH', 'NORMAL'])
-    
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://drug-predition.onrender.com"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/predict")
 def predict(input_data: PredictionInput):
     features = [[
