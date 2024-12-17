@@ -57,7 +57,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://drug-predition.onrender.com/predict"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
